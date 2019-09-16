@@ -1,0 +1,37 @@
+Scanner in = new Scanner(System.in)
+Random r = new Random()
+
+int total
+int nextCard
+boolean anotherCard
+boolean playAgain = true
+
+while (playAgain) {
+	total = 0
+	anotherCard = true
+	
+	total = r.nextInt(10)+1
+	nextCard = r.nextInt(10)+1
+	print("First cards: ")
+	println(total + ", " + nextCard)
+	total += nextCard
+	println("Total: " + total)
+	
+	while(anotherCard) {
+		print("Do you want another card? (y/n): ")
+		anotherCard = in.next().charAt(0) == 'y'
+		
+		if (anotherCard) {
+			nextCard = r.nextInt(10)+1
+			total += nextCard
+			println("Card: " + nextCard)
+			println("Total: " + total)
+			if (total > 21) {
+				println("Bust")
+				anotherCard = false
+			}
+		}
+	}
+	print("Would you like to play again? (y/n): ")
+	playAgain = in.next().charAt(0) == 'y'
+}

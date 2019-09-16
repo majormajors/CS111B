@@ -44,6 +44,7 @@ public class Blackjack {
             }
             System.out.print("Would you like to play again? (y/n): ");
             playAgain = shouldContinue();
+            System.out.println();
         }
     }
 
@@ -61,6 +62,6 @@ public class Blackjack {
     }
 
     private int drawCard() {
-        return random.nextInt(9)+1;
+        return random.nextInt(10)+1;
     }
 }
