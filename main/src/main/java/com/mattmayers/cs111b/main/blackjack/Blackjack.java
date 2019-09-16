@@ -11,15 +11,14 @@ public class Blackjack {
     private final Scanner scanner = new Scanner(System.in);
     private final Random random = new Random();
     private int total = 0;
-
     private boolean playAgain = true;
-    private boolean anotherCard = true;
 
     private void run() {
-        char input;
         int nextCard;
+        boolean anotherCard;
         while (playAgain) {
-            reset();
+            total = 0;
+            anotherCard = true;
             // draw first two cards, display them to the user, and add them to the total
             System.out.print("First cards: ");
             total = drawCard();
@@ -30,8 +29,7 @@ public class Blackjack {
 
             while (anotherCard) {
                 System.out.print("Do you want another card? (y/n): ");
-                input = readInput();
-                anotherCard = input == 'y' || input == 'Y';
+                anotherCard = shouldContinue();
 
                 if (anotherCard) {
                     nextCard = drawCard();
@@ -45,8 +43,7 @@ public class Blackjack {
                 }
             }
             System.out.print("Would you like to play again? (y/n): ");
-            input = readInput();
-            playAgain = input == 'y' || input == 'Y';
+            playAgain = shouldContinue();
         }
     }
 
@@ -58,16 +55,12 @@ public class Blackjack {
         System.out.printf("Total: %d\n", total);
     }
 
-    private char readInput() {
-        return scanner.next().charAt(0);
+    private boolean shouldContinue() {
+        final char input =  scanner.next().charAt(0);
+        return input == 'y' || input == 'Y';
     }
 
     private int drawCard() {
         return random.nextInt(9)+1;
-    }
-
-    private void reset() {
-        total = 0;
-        anotherCard = true;
     }
 }
