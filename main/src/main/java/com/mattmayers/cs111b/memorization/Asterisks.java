@@ -1,4 +1,4 @@
-package com.mattmayers.cs111b.main.memorization;
+package com.mattmayers.cs111b.memorization;
 
 // Matthew Mayers
 

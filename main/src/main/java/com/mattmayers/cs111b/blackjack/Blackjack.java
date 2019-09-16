@@ -1,4 +1,4 @@
-package com.mattmayers.cs111b.main.blackjack;
+package com.mattmayers.cs111b.blackjack;
 
 import java.util.Random;
 import java.util.Scanner;
