@@ -1,0 +1,13 @@
+1. Instances of polymorphism include:
+	- The GridWriter[] array in GridWriter as well as all method calls on these objects in the display() method
+	- The GridItem that is passed to the add() method in GridWriter
+
+2. The x and y variables are in scope because they're declared as protected members of the GridItem class, allowing subtypes to access them.
+
+3. Because even though the subtypes override the containsPoint() method, none of them ever call super.containsPoint()
+
+4. The compiler throws errors about those variables having private access
+
+5. Making GridItem's getArea() and containsPoint() methods abstract would have made it so that they didn't need to have method bodies inside of GridItem. Since none of the subtypes ever call through to the supertypes' methods, there's really no reason for them to do anything on their own.
+
+6. Given the simplicity of the program, I'm not sure interfaces would make much of a difference, but I suppose GridItem might have been an interface instead. The downside to this would be that MyRectangle, MyCircle, and MySquare would need to each redundantly hold onto their own references to x and y separately.
