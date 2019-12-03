@@ -11,29 +11,33 @@ public class NumberGuesser {
     public NumberGuesser(int initialLowerBound, int initialUpperBound) {
         this.initialLowerBound = initialLowerBound;
         this.initialUpperBound = initialUpperBound;
+        reset();
     }
 
     public void reset() {
         this.lowerBound = initialLowerBound;
         this.upperBound = initialUpperBound;
-        calculateMidpoint();
+        midpoint = null;
     }
 
     public void higher() {
         lowerBound = midpoint + 1;
         if (lowerBound <= upperBound) {
-            calculateMidpoint();
+            midpoint = null;
         }
     }
 
     public void lower() {
         upperBound = midpoint - 1;
         if (lowerBound <= upperBound) {
-            calculateMidpoint();
+            midpoint = null;
         }
     }
 
     public int getCurrentGuess() {
+        if (midpoint == null) {
+            calculateMidpoint();
+        }
         return midpoint;
     }
 
