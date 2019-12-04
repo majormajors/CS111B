@@ -92,10 +92,15 @@ public class GuessingProgram {
         do {
             guess = guesser.getCurrentGuess();
             response = getUserResponseToGuess(guess);
-            if (response == 'h') {
-                guesser.higher();
-            } else if (response == 'l') {
-                guesser.lower();
+            try {
+                if (response == 'h') {
+                    guesser.higher();
+                } else if (response == 'l') {
+                    guesser.lower();
+                }
+            } catch (IllegalStateException e) {
+                System.out.println("ERROR: " + e.getMessage());
+                break;
             }
         } while (response != 'c');
     }

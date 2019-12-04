@@ -41,6 +41,17 @@ public class GridWriter {
 		// currently stored in the GridWriter. 
 		size++;
 	}
+
+	public int size() {
+		return size;
+	}
+
+	public GridItem get(int index) {
+		if (index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException(String.format("Index %d is out of bounds: [0, %d]", index, size-1));
+		}
+		return items[index];
+	}
 	
 	/****
 	 * The display method prints a grid into standard output. The size of the grid is determined by the row and 
@@ -54,7 +65,7 @@ public class GridWriter {
 		for (int r = rows; r >= 0; r--) {
 			
 			// Loop through all columns
-			for (int c = 0; c <= columns; c++) {
+			for (int c = 0; c < columns; c++) {
 				
 				// Count the number of GridItems that cover this coordinate
 				count = 0;

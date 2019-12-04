@@ -22,14 +22,14 @@ public class NumberGuesser {
 
     public void higher() {
         lowerBound = midpoint + 1;
-        if (lowerBound <= upperBound) {
+        if (verifyState()) {
             midpoint = null;
         }
     }
 
     public void lower() {
         upperBound = midpoint - 1;
-        if (lowerBound <= upperBound) {
+        if (verifyState()) {
             midpoint = null;
         }
     }
@@ -43,5 +43,12 @@ public class NumberGuesser {
 
     protected void calculateMidpoint() {
         midpoint = (lowerBound + upperBound) / 2;
+    }
+
+    private boolean verifyState() {
+        if (lowerBound > upperBound) {
+            throw new IllegalStateException("There are no more numbers to guess");
+        }
+        return true;
     }
 }

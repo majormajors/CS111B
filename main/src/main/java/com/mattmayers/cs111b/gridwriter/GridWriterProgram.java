@@ -15,7 +15,12 @@ public class GridWriterProgram {
 
 		gw.add(new MySquare(30, 30, 10));
 
-		
+		try {
+			gw.get(7); // should throw an exception
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("ERROR: " + e.getMessage());
+		}
+
 		gw.display();
 	}
 	
